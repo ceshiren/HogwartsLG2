@@ -1,0 +1,10 @@
+myebycicle1: &myeb1
+  batter_level: 10
+  km: 100
+
+myebycicle2: &myeb2
+  batter_level: 20
+  km: 300
+
+default:
+  <<: *myeb2

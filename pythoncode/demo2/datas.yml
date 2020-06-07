@@ -1,0 +1,40 @@
+#  a: 1
+#  b: {c: 3,d: 4}
+#    c: 3
+#    d: 4
+#
+#- a
+#- b
+#- [c, d, e]
+
+#companies:
+#    -
+#        id: 1
+#        name: company1
+#        price: 200W
+#    -
+#        id: 2
+#        name: company2
+#        price: 500W
+#
+#    -
+#      str1: "string strin1 string2"
+#      int1: 10
+#      float1: 3.14
+#      bool1: true
+#      boole2: false
+#      none1: ~
+#      datetime1: 2020-06-06
+#      int2: !!str 20
+
+defaults: &defaults
+  adapter:  postgres
+  host:     localhost
+
+development:
+  database: myapp_development
+  <<: *defaults
+
+test:
+  database: myapp_test
+  <<: *defaults
