@@ -1,8 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
 #BasePage的定义是，它是一个其他page的公共方法的封装，它是一个底层使用的框架
 from selenium.webdriver.remote.webdriver import WebDriver
+
 
 
 class BasePage():
