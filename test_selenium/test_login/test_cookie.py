@@ -27,6 +27,7 @@ class TestCookie():
         # 如果代码没有问题，但是还是没有成功，多加等待时间
         # time.sleep(10)
         #刷新\
+
         while True:
             self.driver.refresh()
             res = WebDriverWait(self.driver, 10).\
@@ -36,15 +37,17 @@ class TestCookie():
         # expected_conditions.xx 都需要传入的是一个元祖
         WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable
                     ((By.CSS_SELECTOR, ".index_service_cnt_itemWrap:nth-child(2)")))
-        self.driver.find_element(By.CSS_SELECTOR, ".index_service_cnt_itemWrap:nth-child(2)").click()
+        self.find(By.CSS_SELECTOR, ".index_service_cnt_itemWrap:nth-child(2)").click()
         WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located((By.ID, "js_upload_file_input")))
         # sendkeys需要使用绝对路径
-        self.driver.find_element(By.ID, "js_upload_file_input").\
+        self.find(By.ID, "js_upload_file_input").\
             send_keys("/Users/lixu/project/hogwarts/HogwartsLG2/test_selenium/data/workbook.xlsx")
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located((By.ID, "upload_file_name")))
-        assert_ele = self.driver.find_element(By.ID, "upload_file_name").text
+
+        assert_ele = WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located((By.ID, "upload_file_name"))).text
+
+        # assert_ele = self.find(By.ID, "upload_file_name").text
         print(assert_ele)
         assert assert_ele == "workbook.xlsx"
 
